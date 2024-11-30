@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,7 +25,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     public static function form(Form $form): Form
     {
@@ -44,7 +45,7 @@ class ProductResource extends Resource
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('avatar')
                     ->label('Avatar')
-                    ->rules('file', 'mimes:png,jpg,jpeg,gif,svg', 'max:2048')->required(),
+                    ->rules('file', 'mimes:png,jpg,jpeg,gif,svg', 'max:5048')->required(),
 
                 RichEditor::make('description')
                     ->label('Description')
@@ -59,11 +60,14 @@ class ProductResource extends Resource
                 SpatieMediaLibraryImageColumn::make('avatar'),
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('category')->sortable()->searchable(),
-                TextColumn::make('description')->searchable(),
+                TextColumn::make('description')->searchable()->html(),
 
             ])
             ->filters([
-                //
+                Filter::make('category')
+                    ->query(function (Builder $query, $value) {
+                        $query->where('category', $value);
+                    })
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
