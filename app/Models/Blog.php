@@ -16,21 +16,27 @@ class Blog extends Model  implements HasMedia
 
     protected $guarded = [];
 
+    protected $appends = ['cover_image'];
+
     protected $casts = [
         'created_at' => 'datetime:d-m-Y',
         'updated_at' => 'datetime:d-m-Y',
     ];
 
     protected $hidden = [
+        'media',
         'status',
         'deleted_at',
         'updated_at',
     ];
 
-    public function registerMediaCollections(): void
+    public function getCoverImageAttribute()
     {
-        $this->addMediaCollection('cover_image')
-            ->singleFile();
+        if ($this->media->first()) {
+            return $this->media->first()->getFullUrl();
+        } else {
+            return null;
+        }
     }
 
     public function creator()

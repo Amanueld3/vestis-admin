@@ -16,14 +16,27 @@ class Partner extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $appends = ['image'];
+
     protected $casts = [
         'created_at' => 'datetime:d-m-Y',
         'updated_at' => 'datetime:d-m-Y',
     ];
 
     protected $hidden = [
+        'media',
         'status',
         'deleted_at',
         'updated_at',
+        'created_at',
     ];
+
+    public function getImageAttribute()
+    {
+        if ($this->media->first()) {
+            return $this->media->first()->getFullUrl();
+        } else {
+            return null;
+        }
+    }
 }

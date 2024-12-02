@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $request->validate([
+            'category' => 'required|in:Safety Wear,High Visibility Garments,Medical Textiles/Equipments,Active Fashion Formal & Casual',
+        ]);
+
+        return Product::where('category', $request->category)->latest()->paginate(5);
     }
 
     /**

@@ -13,7 +13,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        return Partner::latest()->paginate(20);
     }
 
     /**

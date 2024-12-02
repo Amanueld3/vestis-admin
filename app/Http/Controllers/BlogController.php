@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use App\Models\Gallery;
 
 class BlogController extends Controller
 {
@@ -13,15 +14,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return Blog::latest()->paginate(5);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function galleries()
     {
-        //
+        return Gallery::latest()->paginate(12);
     }
 
     /**
