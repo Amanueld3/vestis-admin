@@ -110,8 +110,7 @@ class ContactResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            // Add this line to order the results by 'created_at' in descending order
-            ->orderBy('created_at', 'desc');
+            ->defaultSort('created_at', 'desc');
     }
 
 
