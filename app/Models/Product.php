@@ -15,6 +15,7 @@ class Product extends Model  implements HasMedia
     use HasFactory, HasUuids, SoftDeletes, InteractsWithMedia;
 
     protected $guarded = [];
+    protected $appends = ['avatar'];
 
     protected $casts = [
         'created_at' => 'datetime:d-m-Y',
@@ -26,4 +27,13 @@ class Product extends Model  implements HasMedia
         'deleted_at',
         'updated_at',
     ];
+
+    public function getAvatarAttribute()
+    {
+        if ($this->media->first()) {
+            return $this->media->first()->getFullUrl();
+        } else {
+            return null;
+        }
+    }
 }
