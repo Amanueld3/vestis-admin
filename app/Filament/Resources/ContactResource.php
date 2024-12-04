@@ -109,8 +109,11 @@ class ContactResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ])->latest("created_at");
+            ])
+            // Add this line to order the results by 'created_at' in descending order
+            ->orderBy('created_at', 'desc');
     }
+
 
     public static function getNavigationBadge(): ?string
     {
