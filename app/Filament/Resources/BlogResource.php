@@ -39,6 +39,21 @@ class BlogResource extends Resource
 
                 RichEditor::make('body')
                     ->label('Body')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ])
                     ->required(),
             ])->columns(1);
     }
