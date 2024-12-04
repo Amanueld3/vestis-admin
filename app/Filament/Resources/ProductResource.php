@@ -49,6 +49,21 @@ class ProductResource extends Resource
 
                 RichEditor::make('description')
                     ->label('Description')
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ])
                     ->required(),
             ])->columns(1);
     }
