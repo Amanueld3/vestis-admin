@@ -23,6 +23,7 @@ class Product extends Model  implements HasMedia
     ];
 
     protected $hidden = [
+        'media',
         'status',
         'deleted_at',
         'updated_at',
