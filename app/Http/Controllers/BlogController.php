@@ -14,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return Blog::latest()->paginate(5);
+        return Blog::latest()->with('creator')->paginate(5);
     }
 
     /**
