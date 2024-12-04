@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $request->validate([
-            'category' => 'required|in:Uniforms,High Visibility Garments,Medical Textiles/Equipments,Active Fashion Formal & Casual',
+            'category' => 'required|in:Uniforms,Visibility,Medical,Fashion',
         ]);
 
         return Product::where('category', $request->category)->latest()->paginate(5);
