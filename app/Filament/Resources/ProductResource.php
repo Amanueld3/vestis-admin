@@ -40,7 +40,7 @@ class ProductResource extends Resource
                         'Uniforms' => 'Uniforms',
                         'High Visibility Garments' => 'High Visibility Garments',
                         'Medical Textiles/Equipments' => 'Medical Textiles/Equipments',
-                        'Active, Fashion, Formal & Casual' => 'Active, Fashion, Formal & Casual',
+                        'Active Fashion Formal & Casual' => 'Active, Fashion, Formal & Casual',
                     ])
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('avatar')
