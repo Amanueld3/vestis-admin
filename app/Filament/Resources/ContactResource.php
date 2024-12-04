@@ -109,7 +109,7 @@ class ContactResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->latest("created_at");
     }
 
     public static function getNavigationBadge(): ?string
