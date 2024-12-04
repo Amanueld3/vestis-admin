@@ -37,7 +37,7 @@ class ProductResource extends Resource
                 Select::make('category')
                     ->label('Category')
                     ->options([
-                        'Safety Wear' => 'Safety Wear',
+                        'Uniforms' => 'Uniforms',
                         'High Visibility Garments' => 'High Visibility Garments',
                         'Medical Textiles/Equipments' => 'Medical Textiles/Equipments',
                         'Active, Fashion, Formal & Casual' => 'Active, Fashion, Formal & Casual',
